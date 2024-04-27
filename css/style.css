@@ -1,0 +1,1018 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+  
+body
+{
+    font-family: 'Roboto Mono';
+    color: white;
+}
+
+/***********************************
+***          gallery             ***
+***********************************/
+.gallery#s2, .gallery#s4
+{
+    --color-dark: rgb(172, 18, 154);
+    --color-light: rgb(230, 100, 235);
+    background-color: var(--color-dark);
+    position: relative;
+    width: 100%;
+}
+.gallery#s1, .gallery#s3
+{
+    --color-dark: rgb(12, 97, 7);
+    --color-light: rgb(7, 183, 13);
+    background-color: var(--color-dark);
+    position: relative;
+    width: 100%;
+}
+.gallery::before, .gallery::after
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+    opacity: 0; /* Initially hidden */
+}
+.gallery::before
+{
+    background-image: linear-gradient(var(--color-dark), var(--color-light));
+    opacity: var(--scroll-down-opacity, 0);
+}
+.gallery::after
+{
+    background-image: linear-gradient(var(--color-light), var(--color-dark));
+    opacity: var(--scroll-up-opacity, 0);
+}
+.gallery-content
+{
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+}
+.pictures
+{
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+.pictures .frame-border
+{
+    position: relative;
+    width: calc( 1.4 * 230px); /* Width of frame image */
+    height: calc( 1.4 * 300px); /* Height of frame image */
+    background: url('../img/gold_frame.png') center center / contain no-repeat;
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+.frame-border:hover
+{
+    transform: scale(1.05);
+}
+.image
+{
+    background-size: cover;
+    background-position: center;
+    width: 65%;
+    height: 0;
+    padding-top: 92%; /* For 16:9 aspect ratio */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* s1 i.e. first gallery */
+#s1 .pictures .frame-border:nth-child(1) .image
+{
+    background-image: url('../img/Ana-de-Armas1.jpeg');
+}
+#s1 .pictures .frame-border:nth-child(2) .image
+{
+    background-image: url('../img/lui.jpeg');
+}
+#s1 .pictures .frame-border:nth-child(3) .image
+{
+    background-image: url('../img/ana-tonight-show.jpeg');
+}
+
+/* s2 i.e. second gallery */
+#s2 .pictures .frame-border:nth-child(1) .image
+{
+    background-image: url('../img/marta.jpeg');
+}
+#s2 .pictures .frame-border:nth-child(2) .image
+{
+    background-image: url('../img/joi.jpg');
+}
+#s2 .pictures .frame-border:nth-child(3) .image
+{
+    background-image: url('../img/monroe.jpg');
+}
+
+/* s3 i.e. 3rd gallery */
+#s3 .pictures .frame-border:nth-child(1) .image
+{
+    background-image: url('../img/sag.jpg');
+}
+#s3 .pictures .frame-border:nth-child(2) .image
+{
+    background-image: url('../img/golden-globe.webp');
+}
+#s3 .pictures .frame-border:nth-child(3) .image
+{
+    background-image: url('../img/bafta.jpg');
+}
+
+/* s4 i.e. 4th gallery */
+#s4 .pictures .frame-border:nth-child(1) .image
+{
+    background-image: url('../img/insta.jpg');
+}
+#s4 .pictures .frame-border:nth-child(2) .image
+{
+    background-image: url('../img/dog.jpg');
+}
+#s4 .pictures .frame-border:nth-child(3) .image
+{
+    background-image: url('../img/insta2.jpeg');
+}
+
+/* description for frames */
+.description
+{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 1px 1px 10px black;
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.gallery h2{
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    line-height: 1.6rem;
+    text-shadow: 1px 1px 10px black;
+}
+.gold-block
+{
+    width: 100%;/* 937px; */
+    height: 3.3rem;/* height: 50px; *//* 146px; */
+    background-image: url('../img/block-gold.jpeg');
+    background-size: contain;
+}
+
+/***********************************
+***          header links        ***
+***********************************/
+.circled-link
+{
+    padding: 2px 7px 5px 7px;
+    border-radius: 9px;
+    border: 5px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.circled-link:hover
+{
+    border-color: rgb(172, 18, 154);
+}
+
+/***********************************
+***          header              ***
+***********************************/
+header
+{
+    text-shadow: 1px 1px 10px black;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0)), 
+      linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.3)),
+      linear-gradient(to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 10%, rgba(0,0,0,0) 90%, rgba(0,0,0,0.3) 100%), 
+      url('../img/title2.jpeg');
+    background-size: cover, cover, cover, cover;
+    background-position: center, center, center, center;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+header::after
+{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0)), 
+      linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.6)),
+      linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 10%, rgba(0,0,0,0) 90%, rgba(0,0,0,0.6) 100%)
+}
+@keyframes title-out
+{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+html.scrolled header::after
+{
+      animation: title-out 1s ease forwards;
+}
+
+#header-title a
+{
+    text-decoration: none;
+    color: white;
+    transition: all .5s ease;
+    font-size: 5rem;
+    font-family: 'Raleway';
+    letter-spacing: .4rem;
+}
+#header-title a:hover
+{
+    text-shadow: 0 0 15px rgb(255, 255, 255);
+}
+
+/***********************************
+***         header-menu          ***
+***********************************/
+#header-menu a
+{
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+#header-menu a:hover
+{
+    background-color: rgb(12, 97, 7);
+    color: white;
+}
+
+#header-menu ul
+{
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    font-size: 1.3rem;
+    position: relative;
+}
+
+/***********************************
+***          nav-bar             ***
+***********************************/
+#nav-bar li:last-child
+{
+    display: none;
+}
+
+#nav-bar ul
+{
+    display: flex;
+    list-style: none;
+    font-size: 1.3rem;
+    height: 100%;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#nav-bar
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3.3rem;
+    background-image: linear-gradient(to bottom, rgb(12, 97, 7), rgb(172, 18, 154));
+    z-index: 1000;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+}
+
+#nav-bar li a
+{
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+#nav-bar li > a
+{
+    text-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+}
+
+#nav-bar li
+{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+#nav-bar span
+{
+    font-size: 1rem;
+    font-family: 'Dancing Script';
+    width: 0;
+    opacity: 0;
+    display: inline-flex;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    padding-left: 0;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+}
+
+#nav-bar li:hover span
+{
+    width: auto;
+    opacity: 1;
+    padding-left: 1rem;
+}
+
+#nav-bar li:first-child
+{
+    font-size: 1.1rem;
+    text-shadow: 0 0 0px rgb(0, 0, 0);
+}
+
+#nav-bar li > a:hover
+{
+    text-shadow: 0 0 15px rgb(255, 255, 255);
+}
+
+#nav-bar span > a:hover
+{
+    text-shadow: 0 0 4px rgb(255, 255, 255);
+}
+
+html.scrolled #nav-bar
+{
+    animation: nav-b 1s ease forwards;
+}
+
+@keyframes nav-b
+{
+    from{
+    transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+    
+}
+
+/***********************************
+***          about icons         ***
+***********************************/
+
+/* General icon styling */
+#about .intro .content .icon i
+{
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 20px;
+}
+/* Specific color for each icon */
+#about .intro .content .fa-birthday-cake
+{
+    color: #e57373;
+}
+#about .intro .content .fa-globe-americas
+{
+    color: #64b5f6;
+}
+#about .intro .content .fa-film
+{
+    color: #ba68c8;
+}
+#about .intro .content .fa-heart
+{
+    color: #f06292;
+}
+#about .intro .content .fa-star
+{
+    color: #ffd54f;
+}
+#about .intro .content div .movie-title
+{
+    transition: all .6s ease;
+}
+#about .intro .content div:hover .movie-title
+{
+    color: #ba68c8;
+    font-weight: 700;
+}
+
+/***********************************
+***           carousel           ***
+***********************************/
+.films
+{
+    padding-bottom: 5rem;
+}
+.carousel
+{
+    padding: 2rem; 
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), /* Smaller shadow for subtle depth */
+            0 6px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.slides-wrapper
+{
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    height: 36rem;
+}
+.slides
+{
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    width: 100%;
+    height: 100%;
+}
+.slides > div
+{
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    position: relative;
+}
+.slide
+{
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    box-shadow: inset 0 0 0 100vmax rgba(0,0,0,.6);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+.slide h2
+{
+    margin-bottom: 1rem;
+}
+.slide iframe
+{
+    margin-top: auto;
+}
+.slide span
+{
+    text-align: justify;
+    text-align-last: left;
+}
+#slide-1
+{
+    background-image: url('../img/blade-wall.jpeg');
+}
+    
+#slide-2
+{
+    background-image: url('../img/knives_wall.jpeg');
+}
+#slide-3
+{
+    background-image: url('../img/monroe_wall.jpeg');
+}
+.slides-dots
+{
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateY(250%) translateX(-50%);
+    z-index: 4;
+}
+.slides-dots a
+{
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background-color: black;
+    transition: all ease 1s;
+}
+.slides-dots a:hover
+{
+    box-shadow: 0 0 8px rgba(0, 0, 0, .7);
+}
+
+/***********************************
+***           footer             ***
+***********************************/
+#end
+{
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.4), 
+                0 -6px 10px rgba(0, 0, 0, 0.3);
+    height: 2.5rem;
+    background-color: #e0e0e0 ;
+}
+
+footer .intro .content
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 3rem;
+    gap: 3rem
+}
+
+footer a
+{
+    text-decoration: none;
+    color: black;
+}
+
+footer .intro .content .item
+{
+    flex: 0;
+    width: auto;
+    margin: .5rem 0;
+    padding: .1rem 1rem;
+    padding-top: 3px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 3rem;
+    transition: all .8s ease;
+}
+
+footer .intro .content .item:hover
+{
+    background-color: #000;
+    color: white;
+    transform: scale(1.04);
+}
+
+/***********************************
+***        GENERAL STYLING       ***
+***********************************/
+section, h3
+{
+    scroll-margin-top: 3.3rem; /* resolves nav-bar interference with the heading */
+}
+div
+{
+    scroll-margin-top: 6.6rem; /* resolves nav-bar interference with the heading */
+}
+
+h2
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.heading span
+{
+    font-family: 'Dancing Script', cursive;
+    text-shadow: 1px 1px 10px black;
+    font-weight: 800;
+    text-align: center;
+}
+
+.heading span::before
+{
+    content: "- ";
+}
+
+.intro .heading
+{
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    text-shadow: 1px 1px 10px black;
+    background-color: #e0e0e0 ;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 
+                0 6px 10px rgba(0, 0, 0, 0.3);
+    font-weight: 800;
+}
+
+.sub-heading h3
+{
+    max-width: 1000px;
+    color: white;
+    width: 80%;
+    margin: 0 auto;
+    font-size: 2rem;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: .7rem 3rem;
+    text-shadow: 1px 1px 10px black;
+    background: linear-gradient(to right, 
+                rgba(224, 224, 224, 0) 0%,
+                rgba(224, 224, 224, 1) 10%,
+                rgba(224, 224, 224, 1) 10%, 90%,
+                rgba(224, 224, 224, 1) 90%,
+                rgba(224, 224, 224, 0) 100%);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+}
+
+.intro
+{
+    font-size: 1.1rem;
+    color: black;
+}
+
+#about, #movies, #awards, footer
+{
+    background-image: url('../img/d.avif');
+    background-size: cover;
+    box-shadow: inset 0 0 0 100vmax rgba(0,0,0,.3);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.intro .content .item
+{
+    background-color: #e0e0e0; 
+    line-height: 2rem;
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4),
+                0 6px 10px rgba(0, 0, 0, 0.3); 
+    transition: all .3s ease-in-out;
+}
+
+.intro .content
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+img
+{
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/7;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+    opacity: 0.7;
+    transition: all .3s ease-in-out;
+}
+
+.item-content
+{
+    padding: .1rem 1rem;
+    padding-top: 3px;
+}
+
+#movies .intro .content
+{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+#movies .intro .content .item
+{
+    width: 100%;
+    height: 100%;
+}
+
+.intro .content .item:nth-child(even):hover
+{
+    box-shadow: 1px 4px 8px rgb(172, 18, 154), 
+                0 6px 10px rgb(172, 18, 154); 
+    transform: scale(1.01);
+}
+
+.intro .content .item:nth-child(odd):hover
+{
+    box-shadow: 1px 4px 8px rgb(12, 97, 7), 
+                0 6px 10px rgb(12, 97, 7); 
+    transform: scale(1.01);
+}
+
+.intro .content .item:hover img
+{
+    opacity: 1;
+}
+
+iframe
+{
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    justify-self: center;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 5px solid black;
+    border-radius: 5px;
+    box-sizing: border-box; /* Includes padding and border in the elements total width and height */
+}
+
+#about iframe
+{
+    margin-top: 2rem;
+}
+
+.year
+{
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.name
+{
+    color: rgb(255, 220, 25);
+    text-shadow: 
+        -1px -1px 0 #383838,  
+        1px -1px 0 #383838,
+        -1px 1px 0 #383838,
+        1px 1px 0 #383838; /* Shadows create an outline effect */
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: 'Poppins';
+    letter-spacing: 0.1rem;
+}
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+/* Animation and transition changes aim for better performence on mobile devices */
+
+@media (max-width: 1000px)
+{
+    #movies .intro .content
+    {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    .intro .content
+    {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    #nav-bar li:last-child
+    {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateX(-100%);
+    }
+
+    #nav-bar li:last-child
+    {
+        display: inline-block;
+    }
+
+    #nav-bar ul
+    {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    #nav-bar.clicked ul
+    {
+        flex-direction: column;
+        padding-bottom: .5rem;
+    }
+
+    #nav-bar .nav-tag
+    {
+        display: none;
+    }
+
+    #nav-bar.clicked .nav-tag, #nav-bar.clicked .home
+    {
+        display: block;
+        align-self: self-start;
+    }
+
+    #nav-bar.clicked span
+    {
+        width: auto;
+        height: auto;
+        opacity: 1;
+        gap: 0;
+    }
+
+    #nav-bar.clicked li:hover span
+    {
+        padding-left: 0;
+    }
+
+    #nav-bar.clicked
+    {
+        height: auto;
+        transition: all 2s ease;
+    }
+
+    #nav-bar li
+    {
+        height: 3.3rem
+    }
+
+    #nav-bar
+    {
+        transition: all 2s ease;
+    }
+
+    #nav-bar.clicked a
+    {
+        padding-top: .8rem;
+        padding-bottom: .8rem;
+    }
+}
+
+@media (max-width: 970px)
+{
+    .pictures
+    {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 677px)
+{
+    #header-title a
+    {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 768px)
+{
+    .heading span::before
+    {
+        display: none;
+        content: "- ";
+    }
+    .heading span
+    {
+        font-size: 2.1rem;
+    }
+
+    #header-title a
+    {
+        font-size: 3.5rem;
+    }
+
+    #header-menu ul
+    {
+        gap: 0;
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    #about, #movies, #awards, footer {
+        background-attachment: scroll;
+        background-size: 100% auto;
+        background-repeat: repeat-y;
+    }
+    
+    .gallery::before, .gallery::after
+    {
+        transition: opacity 1.3s ease;
+    }
+    .pictures .frame-border
+    {
+        transition: transform .8s ease;
+    }
+    html.scrolled #nav-bar
+    {
+        animation: nav-b 1.3s ease forwards;
+    }
+    .intro .content .item
+    {
+        transition: all .8s ease;
+    }
+
+    .carousel
+    {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .slide{
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+
+    .intro
+    {
+        font-size: 1rem;
+    }
+
+    .gallery h2{
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 580px) 
+{
+    #movies .intro .content
+    {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(12, 1fr);
+    }
+
+    .intro .content
+    {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    #header-title a
+    {
+        font-size: 2.5rem;
+    }
+
+    #header-menu ul
+    {
+        font-size: .9rem;
+    }
+}
+
+@media (max-width: 468px) 
+{
+    #header-title a
+    {
+        font-size: 2rem;
+    }
+
+    #header-menu ul
+    {
+        font-size: .8rem;
+    }
+}
